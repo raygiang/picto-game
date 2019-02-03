@@ -4,10 +4,11 @@ var socketIO = require("socket.io");
 var path = require("path");
 
 var app = express();
+app.run(host= '0.0.0.0');
 var server = http.createServer(app);
 var io = socketIO.listen(server);
 
-server.listen(process.env.PORT || 9002, '0.0.0.0');
+server.listen(process.env.PORT || 9002);
 app.use(express.static(path.join(__dirname + "/public")));
 console.log("Server running on localhost:9002");
 
