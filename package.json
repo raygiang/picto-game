@@ -1,0 +1,9 @@
+{
+  "name": "test",
+  "description": "test drawing canvas",
+  "author": "Ray",
+  "dependencies": {
+    "express": "4.x",
+    "socket.io": "*"
+  }
+}
