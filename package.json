@@ -6,6 +6,9 @@
     "express": "4.x",
     "socket.io": "*"
   },
+  "engines": {
+    "node": "11.6.0"
+  },
   "scripts": {
     "start": "node index.js"
   }
