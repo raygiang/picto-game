@@ -6,7 +6,7 @@ var updateArea = document.getElementById("updates");
 var context = canvas.getContext("2d");
 var width   = window.innerWidth;
 var height  = window.innerHeight;
-var socket  = io.connect();
+var socket  = io.connect("http://picto-game.herokuapp.com/");
 var startPosition = {
     xPos: 0,
     yPos: 0
