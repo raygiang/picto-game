@@ -86,7 +86,7 @@ io.on("connection", function (socket) {
     });
 
     socket.on("addUser", function(data) {
-        connectedUsers[data[0]] = data[1];
+        connectedUsers[socket.id] = data;
         if (numConnections >= 2) {
             updateTurnStatus(currentTurn);
         }

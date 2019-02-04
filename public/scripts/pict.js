@@ -6,7 +6,7 @@ var updateArea = document.getElementById("updates");
 var context = canvas.getContext("2d");
 var width   = window.innerWidth;
 var height  = window.innerHeight;
-var socket  = io.connect("https://picto-game.herokuapp.com/");
+var socket  = io.connect();
 var startPosition = {
     xPos: 0,
     yPos: 0
@@ -127,7 +127,7 @@ function pageInit() {
     while (username === null || username.trim() === "") {
         username = prompt("Please enter a username");
     }
-    socket.emit("addUser", [socket.id, username]);
+    socket.emit("addUser", username);
 
     typingBox.addEventListener("keypress", function(e) {
         if (e.keyCode == 13) {
