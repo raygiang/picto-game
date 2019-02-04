@@ -8,8 +8,9 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO.listen(server);
 
-server.listen(process.env.PORT || 9002, '0.0.0.0');
 app.use(express.static(path.join(__dirname + "/public")));
+server.listen(process.env.PORT || 9002, '0.0.0.0');
+
 console.log("Server running on localhost:9002");
 
 var connectedUsers = {};
