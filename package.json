@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "description": "test drawing canvas",
+  "name": "pictionary game",
+  "description": "game used to test sockets",
   "author": "Ray",
   "dependencies": {
     "express": "4.x",
