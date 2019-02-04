@@ -73,7 +73,7 @@ socket.on("addMessage", function(data) {
 socket.on("drawingTurn", function(data) {
     updateArea.innerHTML = "Your Turn, you are drawing: " + data;
     canvas.onmousemove = function(e) { drawing(e); };
-    canvas.touchmove = function(e) { drawing(e); };
+    canvas.ontouchmove = function(e) { drawing(e); };
     typingBox.disabled = true;
 });
 
@@ -86,7 +86,7 @@ socket.on("guessingTurn", function(data) {
 socket.on("idle", function() {
     updateArea.innerHTML = "Waiting for players...";
     canvas.onmousemove = function(e) { drawing(e); };
-    canvas.touchmove = function(e) { drawing(e); };
+    canvas.ontouchmove = function(e) { drawing(e); };
     typingBox.disabled = false;
 });
 
@@ -115,13 +115,13 @@ function pageInit() {
     canvas.height = 400;
 
     canvas.onmousedown = function() { isDrawing = true };
-    canvas.touchstart = function() { isDrawing = true };
+    canvas.ontouchstart = function() { isDrawing = true };
 
     canvas.onmousemove = function(e) { drawing(e); };
-    canvas.touchmove = function(e) { drawing(e); };
+    canvas.ontouchmove = function(e) { drawing(e); };
 
     canvas.onmouseup = function() { isDrawing = false };
-    canvas.touchend = function() { isDrawing = true };
+    canvas.ontouchend = function() { isDrawing = true };
 
     while (username === null || username.trim() === "") {
         username = prompt("Please enter a username");
