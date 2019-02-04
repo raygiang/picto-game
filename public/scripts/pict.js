@@ -73,7 +73,10 @@ socket.on("addMessage", function(data) {
 socket.on("drawingTurn", function(data) {
     updateArea.innerHTML = "Your Turn, you are drawing: " + data;
     canvas.onmousemove = function(e) { drawing(e); };
-    canvas.ontouchmove = function(e) { drawing(e); };
+    canvas.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+        drawing(e);
+    });
     typingBox.disabled = true;
 });
 
@@ -86,7 +89,10 @@ socket.on("guessingTurn", function(data) {
 socket.on("idle", function() {
     updateArea.innerHTML = "Waiting for players...";
     canvas.onmousemove = function(e) { drawing(e); };
-    canvas.ontouchmove = function(e) { drawing(e); };
+    canvas.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+        drawing(e);
+    });
     typingBox.disabled = false;
 });
 
@@ -115,13 +121,22 @@ function pageInit() {
     canvas.height = 400;
 
     canvas.onmousedown = function() { isDrawing = true };
-    canvas.ontouchstart = function() { isDrawing = true };
+    canvas.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        isDrawing = true;
+    });
 
     canvas.onmousemove = function(e) { drawing(e); };
-    canvas.ontouchmove = function(e) { drawing(e); };
+    canvas.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+        drawing(e);
+    });
 
     canvas.onmouseup = function() { isDrawing = false };
-    canvas.ontouchend = function() { isDrawing = true };
+    canvas.addEventListener("touchend", function(e) {
+        e.preventDefault();
+        isDrawing = false;
+    });
 
     while (username === null || username.trim() === "") {
         username = prompt("Please enter a username");
