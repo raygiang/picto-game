@@ -1,6 +1,7 @@
 var express = require("express"); 
 var http = require("http");
 var socketIO = require("socket.io")(server);
+socketIO.on('connection', () => { /* … */ });
 var path = require("path");
 
 var app = express();
