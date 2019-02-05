@@ -79,7 +79,7 @@ io.on("connection", function (socket) {
 
     socket.on("newMessage", function(data) {
         io.sockets.emit("addMessage", data);
-        if (data[1].trim().toLowerCase() === currentWord) {
+        if (data[1].trim().toLowerCase() === currentWord.toLowerCase()) {
             io.sockets.emit("correctGuess", data[0]);
             endGame();
         }
