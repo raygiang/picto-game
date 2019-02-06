@@ -118,11 +118,13 @@ function pageInit() {
         let mouseDownEvent = new MouseEvent("mousedown", {});
         canvas.dispatchEvent(mouseDownEvent);
         messageArea.innerHTML = "touch start";
+        let mouseMoveEvent = new MouseEvent("mousemove", {});
+        canvas.dispatchEvent(mouseMoveEvent);
     });
 
     canvas.onmousemove = function(e) { drawing(e); };
     canvas.addEventListener("touchmove", function(e) {
-        e.preventDefault();
+        // e.preventDefault();
         messageArea.innerHTML = "touch move";
         let mouseMoveEvent = new MouseEvent("mousemove", {
             // "clientX":touch.clientX,
