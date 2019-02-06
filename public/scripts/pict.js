@@ -117,7 +117,7 @@ function pageInit() {
         e.preventDefault();
         let mouseDownEvent = new MouseEvent("mousedown", {});
         canvas.dispatchEvent(mouseDownEvent);
-        messageArea.innerHTML = "touch start";
+        messageArea.innerHTML = "touch start, (" + isDrawing + ")";
         let mouseMoveEvent = new MouseEvent("mousemove", {});
         canvas.dispatchEvent(mouseMoveEvent);
     });
