@@ -114,7 +114,7 @@ function pageInit() {
 
     canvas.onmousedown = function() { isDrawing = true };
     canvas.addEventListener("touchstart", function(e) {
-        // e.preventDefault();
+        e.preventDefault();
         let mouseDownEvent = new MouseEvent("mousedown", {});
         canvas.dispatchEvent(mouseDownEvent);
         messageArea.innerHTML = "touch start";
@@ -122,7 +122,7 @@ function pageInit() {
 
     canvas.onmousemove = function(e) { drawing(e); };
     canvas.addEventListener("touchmove", function(e) {
-        // e.preventDefault();
+        e.preventDefault();
         let mouseMoveEvent = new MouseEvent("mousemove", {
             "clientX":touch.clientX,
             "clientY":touch.clientY});
@@ -132,7 +132,7 @@ function pageInit() {
 
     canvas.onmouseup = function() { isDrawing = false };
     canvas.addEventListener("touchend", function(e) {
-        // e.preventDefault();
+        e.preventDefault();
         let mouseUpEvent = new MouseEvent("mouseup", {});
         canvas.dispatchEvent(mouseUpEvent);
         messageArea.innerHTML = "touch end";
