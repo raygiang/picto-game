@@ -117,6 +117,7 @@ function pageInit() {
         // e.preventDefault();
         let mouseDownEvent = new MouseEvent("mousedown", {});
         canvas.dispatchEvent(mouseDownEvent);
+        messageArea.innerHTML = "touch start";
     });
 
     canvas.onmousemove = function(e) { drawing(e); };
@@ -126,6 +127,7 @@ function pageInit() {
             "clientX":touch.clientX,
             "clientY":touch.clientY});
         canvas.dispatchEvent(mouseMoveEvent);
+        messageArea.innerHTML = "touch move";
     });
 
     canvas.onmouseup = function() { isDrawing = false };
@@ -133,6 +135,7 @@ function pageInit() {
         // e.preventDefault();
         let mouseUpEvent = new MouseEvent("mouseup", {});
         canvas.dispatchEvent(mouseUpEvent);
+        messageArea.innerHTML = "touch end";
     });
 
     while (username === null || username.trim() === "") {
