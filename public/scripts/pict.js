@@ -117,9 +117,7 @@ function pageInit() {
         e.preventDefault();
         let mouseDownEvent = new MouseEvent("mousedown", {});
         canvas.dispatchEvent(mouseDownEvent);
-        messageArea.innerHTML = "touch start, (" + isDrawing + ")";
-        let mouseMoveEvent = new MouseEvent("mousemove", {});
-        canvas.dispatchEvent(mouseMoveEvent);
+        messageArea.innerHTML = "touch start";
     });
 
     canvas.onmousemove = function(e) { drawing(e); };
@@ -127,8 +125,8 @@ function pageInit() {
         // e.preventDefault();
         messageArea.innerHTML = "touch move";
         let mouseMoveEvent = new MouseEvent("mousemove", {
-            // "clientX":touch.clientX,
-            // "clientY":touch.clientY
+            "clientX":touch.clientX,
+            "clientY":touch.clientY
         });
         canvas.dispatchEvent(mouseMoveEvent);
     });
