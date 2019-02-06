@@ -117,14 +117,12 @@ function pageInit() {
         e.preventDefault();
         let mouseDownEvent = new MouseEvent("mousedown", {});
         canvas.dispatchEvent(mouseDownEvent);
-        messageArea.innerHTML = "touch start";
     });
 
     canvas.onmousemove = function(e) { drawing(e); };
     canvas.addEventListener("touchmove", function(e) {
         e.preventDefault();
         var touch = e.touches[0];
-        messageArea.innerHTML = "touch move + (" + touch.pageX + ", " + touch.pageY + ")";
         let mouseMoveEvent = new MouseEvent("mousemove", {
             "clientX":touch.pageX,
             "clientY":touch.pageY
@@ -137,7 +135,6 @@ function pageInit() {
         e.preventDefault();
         let mouseUpEvent = new MouseEvent("mouseup", {});
         canvas.dispatchEvent(mouseUpEvent);
-        messageArea.innerHTML = "touch end";
     });
 
     while (username === null || username.trim() === "") {
