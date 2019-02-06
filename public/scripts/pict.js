@@ -71,7 +71,7 @@ socket.on("addMessage", function(data) {
 });
 
 socket.on("drawingTurn", function(data) {
-    updateArea.innerHTML = "Your Turn, you are drawing: " + data;
+    updateArea.innerHTML = "Your Turn, you are drawing: " + data.toUpperCase();
     canvas.onmousemove = function(e) { drawing(e); };
     canvas.addEventListener("touchmove", function(e) {
         e.preventDefault();
