@@ -123,7 +123,7 @@ function pageInit() {
     canvas.onmousemove = function(e) { drawing(e); };
     canvas.addEventListener("touchmove", function(e) {
         // e.preventDefault();
-        messageArea.innerHTML = "touch move + (" + touch.clientX + ", " + touch.clientX + ")";
+        messageArea.innerHTML = "touch move + (" + e.clientX + ", " + e.clientY + ")";
         let mouseMoveEvent = new MouseEvent("mousemove", {
             "clientX":touch.clientX,
             "clientY":touch.clientY
