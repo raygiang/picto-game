@@ -124,8 +124,9 @@ function pageInit() {
     canvas.addEventListener("touchmove", function(e) {
         e.preventDefault();
         let mouseMoveEvent = new MouseEvent("mousemove", {
-            "clientX":touch.clientX,
-            "clientY":touch.clientY});
+            // "clientX":touch.clientX,
+            // "clientY":touch.clientY
+        });
         canvas.dispatchEvent(mouseMoveEvent);
         messageArea.innerHTML = "touch move";
     });
