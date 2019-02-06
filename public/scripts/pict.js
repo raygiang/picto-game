@@ -123,12 +123,12 @@ function pageInit() {
     canvas.onmousemove = function(e) { drawing(e); };
     canvas.addEventListener("touchmove", function(e) {
         e.preventDefault();
+        messageArea.innerHTML = "touch move";
         let mouseMoveEvent = new MouseEvent("mousemove", {
             // "clientX":touch.clientX,
             // "clientY":touch.clientY
         });
         canvas.dispatchEvent(mouseMoveEvent);
-        messageArea.innerHTML = "touch move";
     });
 
     canvas.onmouseup = function() { isDrawing = false };
