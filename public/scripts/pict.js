@@ -122,7 +122,9 @@ function pageInit() {
     canvas.onmousemove = function(e) { drawing(e); };
     canvas.addEventListener("touchmove", function(e) {
         e.preventDefault();
-        let mouseMoveEvent = new MouseEvent("mousemove", {"clientX":e.clientX, "clientY":e.clientY});
+        let mouseMoveEvent = new MouseEvent("mousemove", {
+            "clientX":touch.clientX,
+            "clientY":touch.clientY});
         canvas.dispatchEvent(mouseMoveEvent);
     });
 
