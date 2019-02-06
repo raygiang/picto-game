@@ -124,6 +124,7 @@ function pageInit() {
         e.preventDefault();
         let mouseMoveEvent = new MouseEvent("mousemove", {});
         canvas.dispatchEvent(mouseMoveEvent);
+        alert("test");
     });
 
     canvas.onmouseup = function() { isDrawing = false };
