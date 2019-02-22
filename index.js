@@ -18,6 +18,11 @@ var numConnections = 0;
 var currentTurn = "";
 var currentWord = "";
 
+function Player() {
+    this.username = "";
+    this.score = 0;
+}
+
 function startGame() {
     let randomNum = Math.floor(Math.random() * (numConnections));
     let userID = Object.keys(connectedUsers)[randomNum];
@@ -50,18 +55,17 @@ io.on("connection", function (socket) {
     console.log("connection made with id: " + socket.id);
     numConnections++;
     console.log("Number of players is: " + numConnections);
-    connectedUsers[socket.id] = "";
+    connectedUsers[socket.id] = new Player();
 
     io.sockets.emit("idle");
     io.sockets.emit("drawPrevious", drawingHistory);
-    io.sockets.emit("updateUsers", connectedUsers);
 
     if (currentTurn === "" && numConnections >= 2) {
         startGame();
     }
 
     socket.on("disconnect", function () {
-        io.sockets.emit("leftRoom", connectedUsers[socket.id]);
+        io.sockets.emit("leftRoom", connectedUsers[socket.id].username);
         delete connectedUsers[socket.id];
         io.sockets.emit("updateUsers", connectedUsers);
         numConnections--;
@@ -78,15 +82,18 @@ io.on("connection", function (socket) {
     });
 
     socket.on("newMessage", function(data) {
-        io.sockets.emit("addMessage", data);
-        if (data[1].trim().toLowerCase() === currentWord.toLowerCase()) {
-            io.sockets.emit("correctGuess", data[0]);
+        let msgUser = connectedUsers[socket.id].username;
+        io.sockets.emit("addMessage", [msgUser, data]);
+        if (data.trim().toLowerCase() === currentWord.toLowerCase()) {
+            connectedUsers[socket.id].score++;
+            io.sockets.emit("updateUsers", connectedUsers);
+            io.sockets.emit("correctGuess", msgUser);
             endGame();
         }
     });
 
     socket.on("addUser", function(data) {
-        connectedUsers[socket.id] = data;
+        connectedUsers[socket.id].username = data;
         if (numConnections >= 2) {
             updateTurnStatus(currentTurn);
         }
@@ -96,5 +103,10 @@ io.on("connection", function (socket) {
     socket.on("sendWord", function(data) {
         currentWord = data;
         updateTurnStatus(socket.id);
+    });
+
+    socket.on("clearDrawing", function() {
+        drawingHistory = [];
+        io.sockets.emit("clearCanvas");
     });
 });

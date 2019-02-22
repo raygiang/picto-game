@@ -36,23 +36,45 @@ body {
 	font-weight: bold;
 }
 
+.player {
+	border: 1px solid #000;
+	padding: 0 1em;
+	margin: 1em;
+	border-radius: 25px;
+}
+
 #updates {
 	flex: 100%;
 	text-align: center;
 	margin: 0.5em 0;
 }
 
-#drawing-area {
-	flex: 4 0 0;
+#control-panel {
+	flex: 1 0 0;
 	border: 1px solid black;
+	max-height: 350px;
+	text-align: center;
+}
+
+#colour-picker {
+	width: 100%;
+	margin-bottom: 2em;
+}
+
+#drawing-area {
+	flex: 5 0 0;
+	border: 1px solid black;
+	max-height: 350px;
+	position: relative;
 	background: #757575;
 }
 
 #player-list {
 	flex: 1 0 0;
 	border: 1px solid black;
-	max-height: 500px;
+	max-height: 350px;
 	text-align: center;
+	overflow-y: auto;
 }
 
 #messages {
