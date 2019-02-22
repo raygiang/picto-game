@@ -5,6 +5,7 @@ var typingBox = document.getElementById("typing-area");
 var updateArea = document.getElementById("updates");
 var selColour = document.getElementById("colour-picker");
 var clearButton = document.getElementById("clear-button");
+var skipButton = document.getElementById("skip-button");
 var context = canvas.getContext("2d");
 var socket;
 var startPosition = {
@@ -80,6 +81,8 @@ function initSocketListeners() {
         canvas.onmousemove = function(e) { drawing(e); };
         typingBox.disabled = true;
         clearButton.disabled = false;
+        skipButton.disabled = true;
+        socket.emit("checkCanSkip");
     });
 
     socket.on("guessingTurn", function(data) {
@@ -87,6 +90,7 @@ function initSocketListeners() {
         canvas.onmousemove = null;
         typingBox.disabled = false;
         clearButton.disabled = true;
+        skipButton.disabled = true;
     });
 
     socket.on("idle", function() {
@@ -94,6 +98,7 @@ function initSocketListeners() {
         canvas.onmousemove = function(e) { drawing(e); };
         typingBox.disabled = false;
         clearButton.disabled = false;
+        skipButton.disabled = true;
     });
 
     socket.on("clearCanvas", function() {
@@ -114,6 +119,10 @@ function initSocketListeners() {
         messageArea.innerHTML += "<div><span class='warning'>" + data + 
         " has left the room.</span></div>"; 
         messageArea.scrollTop = messageArea.scrollHeight;
+    });
+
+    socket.on("canSkip", function() {
+        skipButton.disabled = false;
     });
 }
 
@@ -162,6 +171,10 @@ function pageInit() {
 
     clearButton.onclick = function() {
         socket.emit("clearDrawing");
+    };
+
+    skipButton.onclick = function() {
+        socket.emit("skipTurn");
     };
 }
 

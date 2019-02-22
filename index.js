@@ -109,4 +109,16 @@ io.on("connection", function (socket) {
         drawingHistory = [];
         io.sockets.emit("clearCanvas");
     });
+
+    socket.on("checkCanSkip", function() {
+        if(connectedUsers[socket.id].score > 0) {
+            io.to(socket.id).emit("canSkip");
+        }
+    });
+
+    socket.on("skipTurn", function() {
+        connectedUsers[socket.id].score--;
+        io.sockets.emit("updateUsers", connectedUsers);
+        endGame();
+    });
 });
