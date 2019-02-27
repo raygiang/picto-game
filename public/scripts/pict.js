@@ -54,7 +54,7 @@ function initSocketListeners() {
 
     socket.on("drawPrevious", function(data) {
         for(let i in data) {
-            drawLine(data[i][0].xPos, data[i][0].yPos, data[i][1].xPos, 
+            drawLine(data[i][0].xPos, data[i][0].yPos, data[i][1].xPos,
                 data[i][1].yPos, data[i][2]);
         }
     });
@@ -62,8 +62,8 @@ function initSocketListeners() {
     socket.on("updateUsers", function(data) {
         playerList.innerHTML = "<div>Player List: </div>";
         for (let i in data) {
-            playerList.innerHTML += "<div class='player'>" + 
-                "<div class='username'>" + data[i].username + "</div>" + 
+            playerList.innerHTML += "<div class='player'>" +
+                "<div class='username'>" + data[i].username + "</div>" +
                 "<div class='score'>" + "Score: " + data[i].score + "</div>" +
                 "</div>";
         }
@@ -71,9 +71,9 @@ function initSocketListeners() {
 
     socket.on("addMessage", function(data) {
         console.log(data);
-        messageArea.innerHTML += "<div><span class='username'>" + data[0] + 
+        messageArea.innerHTML += "<div><span class='username'>" + data[0] +
             "</span>: " + data[1] + "</div>";
-        messageArea.scrollTop = messageArea.scrollHeight;        
+        messageArea.scrollTop = messageArea.scrollHeight;
     });
 
     socket.on("drawingTurn", function(data) {
@@ -110,14 +110,14 @@ function initSocketListeners() {
     });
 
     socket.on("correctGuess", function(data) {
-        messageArea.innerHTML += "<div><span class='correct'>Congratulations, " 
-        + data + " you are correct!</span></div>"; 
+        messageArea.innerHTML += "<div><span class='correct'>Congratulations, "
+        + data + " you are correct!</span></div>";
         messageArea.scrollTop = messageArea.scrollHeight;
     });
 
     socket.on("leftRoom", function(data) {
-        messageArea.innerHTML += "<div><span class='warning'>" + data + 
-        " has left the room.</span></div>"; 
+        messageArea.innerHTML += "<div><span class='warning'>" + data +
+        " has left the room.</span></div>";
         messageArea.scrollTop = messageArea.scrollHeight;
     });
 

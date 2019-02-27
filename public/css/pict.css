@@ -9,6 +9,10 @@ html {
 
 body {
 	margin: 0;
+	background-image:url("../images/geometry.png");
+	font-family: 'Bitter', serif;
+
+
 }
 
 .page-wrapper {
@@ -19,6 +23,25 @@ body {
 .flex-container {
 	display: flex;
 	flex-flow: row wrap;
+}
+
+/*HEADER*/
+
+#header{
+	background-color:#fce132;
+	border-bottom: 20px #57c5e8 solid;
+}
+#logo{
+	display:block;
+	padding: 10px 0;
+	width:30%;
+	margin:0 auto;
+}
+
+/*MAIN*/
+
+#main{
+	margin-top:10px;
 }
 
 .username {
@@ -51,9 +74,11 @@ body {
 
 #control-panel {
 	flex: 1 0 0;
-	border: 1px solid black;
+	border: 5px solid #57c5e8;
 	max-height: 350px;
 	text-align: center;
+	padding:10px;
+	background-color:white;
 }
 
 #colour-picker {
@@ -63,22 +88,30 @@ body {
 
 #drawing-area {
 	flex: 5 0 0;
-	border: 1px solid black;
+	border: 3px solid #57c5e8;
 	max-height: 350px;
 	position: relative;
-	background: #757575;
+	background: #aaa9a7;
 }
 
 [id$="button"] {
 	margin-bottom: 1em;
+	background-color:#57c5e8;
+	color:#fce132;
+	border-radius:5px;
+	padding:1em;
+	font-weight: bold;
+	font-family: 'Bitter', serif;
+	font-size:0.9em;
 }
 
 #player-list {
 	flex: 1 0 0;
-	border: 1px solid black;
+	border: 5px solid #57c5e8;
 	max-height: 350px;
 	text-align: center;
 	overflow-y: auto;
+	background-color:white;
 }
 
 #messages {
@@ -86,7 +119,8 @@ body {
 	height: 150px;
 	overflow-y: scroll;
 	word-wrap: break-word;
-	border: 1px solid black;
+	background-color:white;
+	border: 5px solid #57c5e8;
 }
 
 #typing-area {
