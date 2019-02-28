@@ -9,6 +9,7 @@ html {
 
 body {
 	margin: 0;
+	/* Background pattern from Toptal Subtle Patterns */
 	background-image:url("../images/geometry.png");
 	font-family: 'Bitter', serif;
 
